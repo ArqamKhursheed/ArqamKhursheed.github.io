@@ -1,0 +1,27 @@
+import 'package:flutter/material.dart';
+
+class ContactUtils {
+  static const List<IconData> contactIcon = [
+    Icons.home,
+    Icons.phone,
+    Icons.mail,
+  ];
+
+  static const List<String> titles = [
+    "Location",
+    "Phone",
+    "Email",
+  ];
+
+  static const List<String> details = [
+    "Karachi, Pakistan",
+    "(+92) 314 2297598",
+    "arqamkhursheed@gmail.com",
+  ];
+
+  static const List<String> links = [
+    "https://www.google.com/maps/dir/24.9716831,67.0656851//@24.9717568,67.0306654,13z/data=!4m4!4m3!1m1!4e1!1m0",
+    'https://api.whatsapp.com/send?phone=923142297598',
+    "http://mailto:arqamkhursheed@gmail.com",
+  ];
+}
