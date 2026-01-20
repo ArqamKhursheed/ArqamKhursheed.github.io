@@ -41,7 +41,11 @@ class NavBarActionButton extends StatelessWidget {
                     vertical: size.height * 0.015),
                 child: Text(
                   label,
-                  style: const TextStyle(fontSize: 13),
+                  style: TextStyle(
+                      fontSize: 13,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black),
                 ),
               ),
             ),

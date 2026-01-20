@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import '../constants.dart';
 import '../provider/theme/theme_provider.dart';
 import '../responsive/responsive.dart';
+import '../sections/portfolio/project_detail_page.dart';
+import '../utils/project_utils.dart';
 
 class ProjectCard extends StatefulWidget {
   final String? banner;
@@ -11,6 +13,7 @@ class ProjectCard extends StatefulWidget {
   final String projectTitle;
   final String projectDescription;
   final IconData? projectIconData;
+  final int? projectIndex; // Index for project detail page
 
   const ProjectCard({
     Key? key,
@@ -20,6 +23,7 @@ class ProjectCard extends StatefulWidget {
     this.projectIconData,
     required this.projectTitle,
     required this.projectDescription,
+    this.projectIndex,
   }) : super(key: key);
   @override
   ProjectCardState createState() => ProjectCardState();
@@ -39,11 +43,35 @@ class ProjectCardState extends State<ProjectCard> {
       hoverColor: Colors.transparent,
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
-      onTap: widget.projectLink == null
-          ? () {}
-          : () => openURL(
-                widget.projectLink!,
+      onTap: () {
+        if (widget.projectIndex != null) {
+          final projectDetails = ProjectUtils.getProjectDetails();
+          if (widget.projectIndex! < projectDetails.length) {
+            final project = projectDetails[widget.projectIndex!];
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProjectDetailPage(
+                  projectTitle: project['title'] as String,
+                  projectDescription: project['description'] as String,
+                  projectImages: ProjectUtils.detailImages[widget.projectIndex!],
+                  website: project['website'] as String?,
+                  client: project['client'] as String?,
+                  companyName: project['companyName'] as String?,
+                  keyFeatures: project['keyFeatures'] as List<String>?,
+                  challenges: project['challenges'] as List<String>?,
+                  solutions: project['solutions'] as List<String>?,
+                  overview: project['overview'] as String?,
+                  background: project['background'] as String?,
+                  impact: project['impact'] as String?,
+                ),
               ),
+            );
+          }
+        } else if (widget.projectLink != null) {
+          openURL(widget.projectLink!);
+        }
+      },
       onHover: (isHovering) {
         if (isHovering) {
           setState(() {
@@ -55,7 +83,9 @@ class ProjectCardState extends State<ProjectCard> {
           });
         }
       },
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
         padding: const EdgeInsets.all(10),
         margin: Responsive.isDesktop(context)
             ? EdgeInsets.symmetric(horizontal: width * 0.01)
@@ -70,14 +100,22 @@ class ProjectCardState extends State<ProjectCard> {
             : Responsive.isTablet(context)
                 ? height * 0.38
                 : height * 0.22,
+        transform: Matrix4.identity()..scale(isHover ? 1.02 : 1.0),
         decoration: BoxDecoration(
           color: themeChanger.isDark ? Colors.grey.shade900 : Colors.white,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
+          border: isHover
+              ? Border.all(
+                  color: const Color(0xff6EF3A5).withOpacity(0.5),
+                  width: 2,
+                )
+              : null,
           boxShadow: isHover
               ? [
                   BoxShadow(
                     color: const Color(0xff6EF3A5).withAlpha(200),
-                    blurRadius: 12.0,
+                    blurRadius: 20.0,
+                    spreadRadius: 2.0,
                     offset: const Offset(0.0, 0.0),
                   )
                 ]

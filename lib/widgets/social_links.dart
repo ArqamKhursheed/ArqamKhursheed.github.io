@@ -26,13 +26,21 @@ class SocialLinks extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: size.width * 0.005),
               child: IconButton(
                 highlightColor: Colors.white54,
-                splashRadius: size.width * 0.022,
-                icon: Image.asset(e.value,
-                    color: themeChanger.isDark ? Colors.white : Colors.black,
-                    height: Responsive.isMobile(context)
-                        ? size.height * 0.03
-                        : size.height * 0.3),
-                iconSize: Responsive.isMobile(context) ? 18 : 40,
+                splashRadius: Responsive.isMobile(context) ? 20 : 30,
+                icon: Image.asset(
+                  e.value,
+                  color: themeChanger.isDark ? Colors.white : Colors.black,
+                  height: Responsive.isMobile(context)
+                      ? 24
+                      : Responsive.isTablet(context)
+                          ? 32
+                          : 40,
+                ),
+                iconSize: Responsive.isMobile(context)
+                    ? 24
+                    : Responsive.isTablet(context)
+                        ? 32
+                        : 40,
                 onPressed: () => openURL(
                   StaticUtils.socialLinks[e.key],
                 ),

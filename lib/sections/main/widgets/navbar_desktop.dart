@@ -2,7 +2,6 @@ import 'package:arqam_portfolio/provider/theme/theme_provider.dart';
 import 'package:arqam_portfolio/widgets/navbar_logo.dart';
 import 'package:arqam_portfolio/widgets/navigator_button.dart';
 import 'package:universal_html/html.dart' as html;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../animation/entrance_animation.dart';
@@ -48,6 +47,7 @@ class NavbarDesktop extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5.0),
                     side: const BorderSide(
                       color: Color(0xff6EF3A5),
+                      width: 1.5,
                     ),
                   ),
                   onPressed: () {
@@ -65,7 +65,8 @@ class NavbarDesktop extends StatelessWidget {
                       style: TextStyle(
                           fontFamily: 'Poppins-Regular',
                           fontSize: 14,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1.2),
                     ),
                   ),
                 ),

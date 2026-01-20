@@ -1,7 +1,6 @@
 import 'package:arqam_portfolio/responsive/responsive.dart';
 import 'package:arqam_portfolio/sections/services/Widgets/service_back_card.dart';
 import 'package:flip_card/flip_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -55,7 +54,9 @@ class _ServiceCardState extends State<ServiceCard> {
       child: FlipCard(
         flipOnTouch: kIsWeb ? false : true,
         key: cardKey,
-        back: Container(
+        back: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
           width: Responsive.isDesktop(context)
               ? size.width * 0.22
               : Responsive.isTablet(context)
@@ -65,14 +66,22 @@ class _ServiceCardState extends State<ServiceCard> {
               ? size.height * 0.35
               : size.height * 0.28,
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+          transform: Matrix4.identity()..scale(isHover ? 1.02 : 1.0),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(15),
+            border: isHover
+                ? Border.all(
+                    color: const Color(0xff6EF3A5).withOpacity(0.5),
+                    width: 2,
+                  )
+                : null,
             boxShadow: isHover
                 ? [
                     BoxShadow(
-                      color: const Color(0xffC0392B).withAlpha(100),
-                      blurRadius: 12.0,
+                      color: const Color(0xff6EF3A5).withAlpha(200),
+                      blurRadius: 20.0,
+                      spreadRadius: 2.0,
                       offset: const Offset(0.0, 0.0),
                     )
                   ]
@@ -89,7 +98,9 @@ class _ServiceCardState extends State<ServiceCard> {
             serviceTitle: widget.serviceTitle,
           ),
         ),
-        front: Container(
+        front: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
           width: Responsive.isDesktop(context)
               ? size.width * 0.22
               : Responsive.isTablet(context)
@@ -100,14 +111,22 @@ class _ServiceCardState extends State<ServiceCard> {
               : size.height * 0.28,
           margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+          transform: Matrix4.identity()..scale(isHover ? 1.02 : 1.0),
           decoration: BoxDecoration(
             color: themeChanger.isDark ? Colors.grey.shade900 : Colors.white,
             borderRadius: BorderRadius.circular(15),
+            border: isHover
+                ? Border.all(
+                    color: const Color(0xff6EF3A5).withOpacity(0.5),
+                    width: 2,
+                  )
+                : null,
             boxShadow: isHover
                 ? [
                     BoxShadow(
-                      color: const Color(0xffC0392B).withAlpha(100),
-                      blurRadius: 12.0,
+                      color: const Color(0xff6EF3A5).withAlpha(200),
+                      blurRadius: 20.0,
+                      spreadRadius: 2.0,
                       offset: const Offset(0.0, 0.0),
                     )
                   ]

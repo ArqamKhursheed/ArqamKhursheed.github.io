@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../provider/theme/theme_provider.dart';
 
 class CustomSectionHeading extends StatelessWidget {
   final String text;
@@ -10,9 +12,13 @@ class CustomSectionHeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeChanger = Provider.of<ThemeChanger>(context);
     return Text(text,
-        style: const TextStyle(
-            fontFamily: 'Montserrat', fontSize: 46, height: 1.3));
+        style: TextStyle(
+            fontFamily: 'Montserrat',
+            fontSize: 46,
+            height: 1.3,
+            color: themeChanger.isDark ? Colors.white : Colors.black));
   }
 }
 
@@ -24,10 +30,12 @@ class CustomSectionSubHeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeChanger = Provider.of<ThemeChanger>(context);
     return Text(text,
-        style: const TextStyle(
+        style: TextStyle(
             fontFamily: 'Montserrat',
             fontWeight: FontWeight.w300,
-            fontSize: 13));
+            fontSize: 13,
+            color: themeChanger.isDark ? Colors.white : Colors.black87));
   }
 }

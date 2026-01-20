@@ -53,10 +53,12 @@ class HomeDesktop extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Text(
+                      Text(
                         "WELCOME TO MY PORTFOLIO! ",
                         style: TextStyle(
-                            fontWeight: FontWeight.w300, fontSize: 24),
+                            fontWeight: FontWeight.w300,
+                            fontSize: 24,
+                            color: Colors.white),
                       ),
                       SizedBox(
                         width: size.width * 0.01,
@@ -79,16 +81,19 @@ class HomeDesktop extends StatelessWidget {
                   Row(
                     children: const [
                       Text(
-                        "Aqram ",
+                        "Arqam ",
                         style: TextStyle(
                           fontSize: 72,
                           fontWeight: FontWeight.w700,
+                          color: Colors.white,
                         ),
                       ),
                       Text(
                         "Khursheed",
                         style: TextStyle(
-                            fontSize: 72, fontWeight: FontWeight.w100),
+                            fontSize: 72,
+                            fontWeight: FontWeight.w100,
+                            color: Colors.white),
                       ),
                     ],
                   ),
@@ -110,17 +115,20 @@ class HomeDesktop extends StatelessWidget {
                             TyperAnimatedText(
                               ' Flutter Developer',
                               speed: const Duration(milliseconds: 50),
-                              textStyle: TextStyle(fontSize: 22),
+                              textStyle: const TextStyle(
+                                  fontSize: 22, color: Colors.white),
                             ),
                             TyperAnimatedText(
                               ' Blockchain Developer',
                               speed: const Duration(milliseconds: 50),
-                              textStyle: TextStyle(fontSize: 22),
+                              textStyle: const TextStyle(
+                                  fontSize: 22, color: Colors.white),
                             ),
                             TyperAnimatedText(
                               ' A friend :)',
                               speed: const Duration(milliseconds: 50),
-                              textStyle: TextStyle(fontSize: 22),
+                              textStyle: const TextStyle(
+                                  fontSize: 22, color: Colors.white),
                             ),
                           ],
                           repeatForever: true,

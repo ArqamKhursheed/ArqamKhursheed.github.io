@@ -42,9 +42,9 @@ class _PortfolioDesktopState extends State<PortfolioDesktop> {
                   (e) => ProjectCard(
                     banner: e.value,
                     projectIcon: ProjectUtils.icons[e.key],
-                    projectLink: ProjectUtils.links[e.key],
                     projectTitle: ProjectUtils.titles[e.key],
                     projectDescription: ProjectUtils.description[e.key],
+                    projectIndex: e.key,
                   ),
                 )
                 .toList(),

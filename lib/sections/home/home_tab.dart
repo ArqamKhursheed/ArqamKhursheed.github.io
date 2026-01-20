@@ -48,10 +48,12 @@ class HomeTab extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Text(
+                      Text(
                         "HEY THERE! ",
                         style: TextStyle(
-                            fontWeight: FontWeight.w300, fontSize: 18),
+                            fontWeight: FontWeight.w300,
+                            fontSize: 18,
+                            color: Colors.white),
                       ),
                       SizedBox(
                         width: size.width * 0.01,
@@ -78,6 +80,7 @@ class HomeTab extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 52,
                           fontWeight: FontWeight.w700,
+                          color: Colors.white,
                         ),
                       ),
                       Text(
@@ -85,6 +88,7 @@ class HomeTab extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 52,
                           fontWeight: FontWeight.w100,
+                          color: Colors.white,
                         ),
                       ),
                     ],
@@ -107,17 +111,20 @@ class HomeTab extends StatelessWidget {
                             TyperAnimatedText(
                               ' Flutter Developer',
                               speed: const Duration(milliseconds: 50),
-                              textStyle: TextStyle(fontSize: 22),
+                              textStyle: const TextStyle(
+                                  fontSize: 22, color: Colors.white),
                             ),
                             TyperAnimatedText(
                               ' Blockchain Developer',
                               speed: const Duration(milliseconds: 50),
-                              textStyle: TextStyle(fontSize: 22),
+                              textStyle: const TextStyle(
+                                  fontSize: 22, color: Colors.white),
                             ),
                             TyperAnimatedText(
                               ' A friend :)',
                               speed: const Duration(milliseconds: 50),
-                              textStyle: TextStyle(fontSize: 22),
+                              textStyle: const TextStyle(
+                                  fontSize: 22, color: Colors.white),
                             ),
                           ],
                           repeatForever: true,

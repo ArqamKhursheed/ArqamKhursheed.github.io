@@ -1,7 +1,6 @@
 import 'package:arqam_portfolio/sections/services/Widgets/service_card.dart';
 import 'package:arqam_portfolio/widgets/custom_text_headings.dart';
 import 'package:flip_card/flip_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/services_utils.dart';

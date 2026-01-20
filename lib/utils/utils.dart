@@ -1,9 +1,10 @@
 import 'package:arqam_portfolio/sections/about/about.dart';
 import 'package:arqam_portfolio/sections/contact/contact.dart';
+import 'package:arqam_portfolio/sections/experience/experience.dart';
 import 'package:arqam_portfolio/sections/home/home.dart';
 import 'package:arqam_portfolio/sections/services/services.dart';
 import 'package:arqam_portfolio/widgets/footer.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../sections/portfolio/portfolio.dart';
 
@@ -46,7 +47,7 @@ class StaticUtils {
   ];
 
   static const String resume =
-      'https://drive.google.com/file/d/1LVG9Hu22cOaMueYFG04Y5yMNIfzjG9mC/view?usp=sharing';
+      'https://drive.google.com/file/d/1R0q5EtSsqb3SI_zbhpEs1n0uH3fM1PBp/view?usp=sharing';
 
   static const String gitHub = 'https://github.com/ArqamKhursheed';
 }
@@ -57,6 +58,7 @@ class BodyUtils {
     About(),
     Services(),
     Portfolio(),
+    Experience(),
     Contact(),
     Footer()
   ];

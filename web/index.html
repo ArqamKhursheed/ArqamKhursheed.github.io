@@ -29,19 +29,60 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>arqam_portfolio</title>
+  <title>Arqam Khursheed - Portfolio</title>
   <link rel="manifest" href="manifest.json">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0a192f;
+    }
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      color: #64ffda;
+      font-family: 'Arial', sans-serif;
+    }
+    .spinner {
+      border: 4px solid rgba(100, 255, 218, 0.2);
+      border-top: 4px solid #64ffda;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 
+  <!-- This script adds the flutter initialization JS code -->
   <script>
     // The value below is injected by flutter build, do not touch.
     var serviceWorkerVersion = null;
   </script>
-  <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
 <body>
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Loading Portfolio...</p>
+  </div>
   <script>
     window.addEventListener('load', function(ev) {
+      // Check if Flutter loader is available
+      if (typeof _flutter === 'undefined' || !_flutter.loader) {
+        console.error('Flutter loader not found');
+        document.getElementById('loading').innerHTML = '<h1>Error: Flutter loader not found. Please refresh the page.</h1>';
+        return;
+      }
+
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
@@ -49,7 +90,15 @@
         },
         onEntrypointLoaded: function(engineInitializer) {
           engineInitializer.initializeEngine().then(function(appRunner) {
+            // Hide loading indicator
+            var loadingEl = document.getElementById('loading');
+            if (loadingEl) {
+              loadingEl.style.display = 'none';
+            }
             appRunner.runApp();
+          }).catch(function(error) {
+            console.error('Error initializing Flutter app:', error);
+            document.getElementById('loading').innerHTML = '<h1>Error loading application. Please check the console and refresh the page.</h1><p style="color: #888;">' + error.toString() + '</p>';
           });
         }
       });

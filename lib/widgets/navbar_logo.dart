@@ -5,18 +5,22 @@ class NavBarLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const Text("< ", style: TextStyle(fontSize: 24)),
-        const Text("Arqam",
+        Text("< ",
+            style: TextStyle(fontSize: 24, color: isDark ? Colors.white : Colors.black)),
+        Text("Arqam",
             style: TextStyle(
                 fontFamily: 'Agustina',
                 fontSize: 20,
-                fontWeight: FontWeight.bold)),
+                fontWeight: FontWeight.bold,
+                color: isDark ? Colors.white : Colors.black)),
         Text(MediaQuery.of(context).size.width >= 1000 ? " />\t\t" : " />",
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 24,
+              color: isDark ? Colors.white : Colors.black,
             ))
       ],
     );
